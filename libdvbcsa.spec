@@ -57,7 +57,8 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %files
-%doc AUTHORS COPYING README
+%doc AUTHORS README
+%license COPYING
 %{_libdir}/*.so.*
 
 %files devel
