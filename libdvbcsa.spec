@@ -1,13 +1,12 @@
 Name:           libdvbcsa
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        DVB Common Scrambling Algorithm with encryption and decryption capabilities
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.videolan.org/developers/libdvbcsa.html
 Source0:        http://download.videolan.org/pub/videolan/libdvbcsa/%{version}/libdvbcsa-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 
 %description
@@ -22,7 +21,7 @@ a faster parallel bitslice implementation.
 %package        devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{_isa} = %{version}-%{release}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -43,17 +42,13 @@ developing applications that use %{name}.
 %endif
 
 
-make %{?_smp_mflags}
+%make_build
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
-find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
+%make_install INSTALL="install -p"
+find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 
 %post -p /sbin/ldconfig
@@ -62,17 +57,18 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS COPYING README
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/dvbcsa/
 %{_libdir}/*.so
 
 
 %changelog
+* Thu Sep 15 2016 Nicolas Chauvet <kwizart@gmail.com> - 1.1.0-2
+- Spec file clean-up
+
 * Thu Jun 09 2011 Nicolas Chauvet <kwizart@gmail.com> - 1.1.0-1
 - Update to 1.1.0
 
