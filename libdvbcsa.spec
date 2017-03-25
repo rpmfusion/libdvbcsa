@@ -37,9 +37,6 @@ developing applications that use %{name}.
 %ifarch %{ix86} x86_64
   --enable-sse2 --enable-uint64 \
 %endif
-%ifarch ppc ppc64
-  --enable-altivec \
-%endif
 
 
 %make_build
