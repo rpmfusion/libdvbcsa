@@ -1,12 +1,12 @@
 Name:           libdvbcsa
 Version:        1.1.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        DVB Common Scrambling Algorithm with encryption and decryption capabilities
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.videolan.org/developers/libdvbcsa.html
-Source0:        http://download.videolan.org/pub/videolan/libdvbcsa/%{version}/libdvbcsa-%{version}.tar.gz
+Source0:        https://download.videolan.org/pub/videolan/libdvbcsa/%{version}/libdvbcsa-%{version}.tar.gz
 
 
 %description
@@ -64,6 +64,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Wed Jul 05 2017 Nicolas Chauvet <kwizart@gmail.com> - 1.1.0-5
+- Use https on download
+
 * Sat Mar 25 2017 Nicolas Chauvet <kwizart@gmail.com> - 1.1.0-4
 - Disable altivec to fix build
 
