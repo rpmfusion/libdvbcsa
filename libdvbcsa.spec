@@ -1,6 +1,6 @@
 Name:           libdvbcsa
 Version:        1.1.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        DVB Common Scrambling Algorithm with encryption and decryption capabilities
 
 Group:          System Environment/Libraries
@@ -64,6 +64,9 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.1.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Wed Jul 05 2017 Nicolas Chauvet <kwizart@gmail.com> - 1.1.0-5
 - Use https on download
 
